@@ -1,0 +1,60 @@
+.background-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Mantiene el fondo detrás del contenido */
+    background: linear-gradient(to right, #ffffff, #dbdbde);
+  }
+  
+  /* SVG ocupa toda la pantalla */
+  .background-svg {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  /* Animaciones de líneas */
+  #light-blue line {
+    stroke: #06cefa;
+    stroke-width: 6;
+    stroke-opacity: 0.15;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 800;
+    animation: draw 4s infinite ease-in-out;
+  }
+  
+  #red line {
+    stroke: #0942de;
+    stroke-width: 12;
+    stroke-opacity: 0.15;
+    animation: fade 4s infinite ease-in-out;
+  }
+  
+  #blue line {
+    stroke: #6bdff9;
+    stroke-width: 12;
+    stroke-opacity: 0.15;
+    animation: fade 4s infinite ease-in-out;
+  }
+  
+  /* Animaciones */
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @keyframes fade {
+    0% {
+      opacity: 0.15;
+    }
+    50% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 0.15;
+    }
+  }
+  

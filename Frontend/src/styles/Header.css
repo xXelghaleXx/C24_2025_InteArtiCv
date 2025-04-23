@@ -1,0 +1,163 @@
+/* ======================== */
+/* 🎨 ESTILOS DEL HEADER 🎨 */
+/* ======================== */
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Contenedor Izquierdo */
+.logo-slidebar-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 50px;
+  object-fit: contain;
+}
+
+.separator {
+  height: 30px;
+  width: 2px;
+  background-color: #ddd;
+}
+
+/* Contenedor Derecho */
+.right-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  padding-right: 10px; /* Se añade un pequeño margen derecho */
+}
+
+.institution-info {
+  display: flex;
+  gap: 5px;
+}
+
+.institution-name,
+.institution-department {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.institution-name { color: #333; }
+.institution-department { color: #555; }
+
+/* User Info */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-name {
+  font-size: 0.95rem;
+  color: #444;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  white-space: normal; /* Cambiado de nowrap a normal */
+  overflow: visible; /* Cambiado de hidden a visible */
+  text-overflow: clip; /* Eliminado ellipsis */
+  max-width: none; /* Eliminado el ancho máximo */
+}
+
+/* Botón de Logout */
+.logout-button {
+  background: transparent !important;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  margin-left: 8px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.logout-button:hover,
+.logout-button:focus,
+.logout-button:active {
+  background: transparent !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.logout-icon {
+  color: #666;
+  font-size: 1.3rem;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover .logout-icon {
+  color: #d32f2f;
+  transform: scale(1.1);
+}
+
+/* Eliminar barra deslizadora manteniendo el contenido fijo */
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Ocultar barra deslizadora para Chrome, Safari y Opera */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .header {
+    width: 100%; /* Ancho completo en pantallas medianas */
+  }
+  .logo { height: 45px; }
+  .separator { height: 25px; width: 1.5px; }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 8px 15px;
+    width: 100%; /* Ancho completo en pantallas pequeñas */
+  }
+  .logo { height: 40px; }
+  .separator { display: none; }
+  .right-info-container { padding-right: 10px; }
+  
+  .user-name {
+    max-width: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    width: 100%; /* Ancho completo en móviles */
+  }
+  .logo { height: 35px; }
+  .institution-name,
+  .institution-department { font-size: 1rem; }
+  .user-name { 
+    font-size: 0.85rem;
+    max-width: 120px;
+  }
+}

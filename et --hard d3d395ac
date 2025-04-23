@@ -1,0 +1,104 @@
+[33mcommit c4facd09f649d9111054dd17ca818dc0fc471344[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Wed Mar 12 16:24:59 2025 -0500
+
+    CvIATest
+
+[33mcommit d3d395ac9059c0a5624f67a334644356265367dd[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Wed Mar 12 15:51:42 2025 -0500
+
+    SubirCvConIAMejorado
+
+[33mcommit 155455ab97d91f1b102d8fac5d9e93e46ace8dd3[m
+Merge: 20f1cbf 85acb2e
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Wed Mar 12 14:34:48 2025 -0500
+
+    Merge branch 'main' of https://github.com/sunvenlay/C24_2025_InteArtiCv
+
+[33mcommit 20f1cbf6cfcf251ca53c7c75e6f22eafdd3e4a30[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Wed Mar 12 14:34:14 2025 -0500
+
+    ValidacionViewCV
+
+[33mcommit 85acb2e83f6bc7ddfea2d84191bbf5f3c0728657[m
+Merge: 93c1cc4 12cc1a6
+Author: Adrian <adriannuno56@gmail.com>
+Date:   Sat Mar 8 17:02:05 2025 -0500
+
+    Merge branch 'main' of https://github.com/sunvenlay/C24_2025_InteArtiCv
+
+[33mcommit 93c1cc4cbd9d6a7dd97ea4e2c708217ec26ed953[m
+Author: Adrian <adriannuno56@gmail.com>
+Date:   Sat Mar 8 17:02:00 2025 -0500
+
+    Frontend_Mejorado
+
+[33mcommit 12cc1a648a4a0526a7d3e88c9c8a30d437bf90b5[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Sat Mar 8 15:44:00 2025 -0500
+
+    Entrevistas_Puntuacion
+
+[33mcommit 22608ac2f7579db16be92381312ff25ba4729aad[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Sat Mar 8 14:55:59 2025 -0500
+
+    PuntuacionEntrevista
+
+[33mcommit fd097782b3c2eaff772bc763499fa3233a00ba9c[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Sat Mar 8 00:55:16 2025 -0500
+
+    Prototipo_ChatBot
+
+[33mcommit 0d2f996d3acfc1289357dd90096a41a24022dfd5[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Fri Mar 7 22:57:13 2025 -0500
+
+    API_DesargaInforme
+
+[33mcommit b21dd88b4434663b5e7e62cb944e2c6b5c98cf52[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Fri Mar 7 20:02:01 2025 -0500
+
+    CambioModel_IngresoCvs_HistorialCvsComplete
+
+[33mcommit a982a1f49196907f862ce60d142d08cff3bd816b[m
+Merge: 2d01270 c1e88b4
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Wed Mar 5 18:17:19 2025 -0500
+
+    Merge branch 'main' of https://github.com/sunvenlay/C24_2025_InteArtiCv
+
+[33mcommit 2d01270d1f046b83a46938b2932e8e33c1fdb54e[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Wed Mar 5 18:16:58 2025 -0500
+
+    Back_ModelsComplete
+
+[33mcommit c1e88b45032018ce30bde6c5e5374dd966988fec[m
+Author: Adrian <adriannuno56@gmail.com>
+Date:   Wed Mar 5 16:04:00 2025 -0500
+
+    FrontEnd_HomePage
+
+[33mcommit 56613808b7df6f5866ceab276acb3ef9a1e757a8[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Wed Mar 5 15:40:08 2025 -0500
+
+    Models y Test del API
+
+[33mcommit 7934d6508d1de0bccb62905c964f13fd64e6a4dc[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Mon Mar 3 17:38:57 2025 -0500
+
+    Pruebita
+
+[33mcommit fb9a2557f2bf0971a0bd9c5c07d85932a4f390d7[m
+Author: sunvenlay <maximo.ventocilla@tecsup.edu.pe>
+Date:   Mon Mar 3 17:37:08 2025 -0500
+
+    first commit

@@ -1,0 +1,218 @@
+/* Reset general para evitar márgenes y padding extra */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Asegurar que el body y el html ocupen toda la pantalla sin espacios extra */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Evita barras de desplazamiento horizontales */
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh; /* Asegura que el contenido cubra toda la pantalla */
+  padding: 20px;
+}
+
+.welcome-text {
+  color: black; /* Asegura que el texto "Bienvenido/a" esté en negro */
+  font-size: 24px; /* Ajusta el tamaño si es necesario */
+  font-weight: bold; /* Opcional: hace que se vea más destacado */
+}
+
+/* Caja de bienvenida - Siempre visible */
+.welcome-box {
+  background: white;
+  padding: 15px 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  width: 90%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Asegurar que el nombre del usuario se vea */
+.username {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Contenedor de las opciones */
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+
+/* Tarjetas de opciones */
+.option-card {
+  background: white;
+  padding: 15px;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.option-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Imagen dentro de la tarjeta */
+.option-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Título dentro de la tarjeta */
+.option-card h3 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* Botón */
+.option-card button {
+  background-color: #0889a6;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+/* Asegurar que el enlace dentro del botón tenga el mismo color */
+.option-card button a {
+  color: white !important;
+  text-decoration: none !important;
+  display: block;
+  width: 100%;
+}
+
+/* Efecto hover en el botón */
+.option-card button:hover {
+  background-color: #066b85;
+}
+
+/* Evitar bordes negros en el botón al hacer click */
+.option-card button:focus {
+  outline: none;
+  border: none;
+}
+
+/* Estilo del Footer */
+footer {
+  width: 100%;
+  text-align: center;
+  background: white !important;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  position: relative;
+}
+
+/* 📌 RESPONSIVE DESIGN */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .welcome-box {
+    font-size: 16px;
+    width: 90%;
+  }
+
+  .option-card {
+    max-width: 280px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .welcome-container {
+    height: auto;
+    padding: 30px 15px;
+  }
+
+  .welcome-box {
+    font-size: 16px;
+    padding: 15px 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .options-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .option-card {
+    width: 85%;
+    max-width: 280px;
+    padding: 12px;
+  }
+
+  .option-card h3 {
+    font-size: 14px;
+  }
+
+  .option-card button {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+/* Dispositivos pequeños */
+@media (max-width: 480px) {
+  .welcome-box {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .options-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .option-card {
+    width: 90%;
+    max-width: 220px;
+    padding: 10px;
+  }
+
+  .option-card h3 {
+    font-size: 13px;
+  }
+
+  .option-card button {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

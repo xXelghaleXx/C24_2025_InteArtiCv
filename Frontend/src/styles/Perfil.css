@@ -1,0 +1,102 @@
+/* Contenedor del perfil */
+.perfil-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Botón de perfil */
+.perfil-button {
+  background: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+}
+
+.perfil-button:hover {
+  background: #f1f1f1;
+}
+
+/* Icono de perfil */
+.perfil-icon {
+  font-size: 22px;
+}
+
+/* Menú desplegable */
+.perfil-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  min-width: 140px;
+  text-align: center;
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Menú desplegado (Activo) */
+.perfil-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Botón de logout */
+.logout-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.logout-button:hover {
+  background: #f1f1f1;
+}
+
+/* ======================= */
+/* 📱 RESPONSIVE DESIGN 📱 */
+/* ======================= */
+
+@media screen and (max-width: 768px) {
+  .perfil-icon {
+    font-size: 20px;
+  }
+
+  .perfil-menu {
+    right: -10px;
+    min-width: 130px;
+  }
+
+  .logout-button {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .perfil-icon {
+    font-size: 18px;
+  }
+
+  .perfil-menu {
+    right: -15px;
+    min-width: 120px;
+  }
+
+  .logout-button {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

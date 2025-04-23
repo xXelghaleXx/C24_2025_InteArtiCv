@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap");
+
+/* ============================ */
+/* 📌 Estilos Generales */
+/* ============================ */
+.slidebar-container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kanit", sans-serif;
+}
+
+/* ============================ */
+/* 📌 Menú Slidebar */
+/* ============================ */
+.slidebar-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 230px;
+    background-color: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(-250px);
+    z-index: 1000;
+    opacity: 0;
+}
+
+.slidebar-menu.open {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* ============================ */
+/* 📌 Títulos y Enlaces del Menú */
+/* ============================ */
+.menu-title {
+    color: #000000;
+    font-weight: 800;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.menu-list .menu-item {
+    list-style: none;
+}
+
+.menu-list .menu-item .menu-link {
+    color: #000000;
+    font-weight: 500;
+    padding: 10px;
+    display: block;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: 0.2s ease-out;
+    text-align: center;
+}
+
+.menu-list .menu-item:hover .menu-link {
+    color: #fff;
+    background-color: rgba(32, 201, 248, 0.9);
+}
+
+/* ============================ */
+/* 📌 Botón de Menú (Hamburguesa) */
+/* ============================ */
+.slidebar-toggle {
+    display: none;
+    visibility: hidden;
+}
+
+.slidebar-icon {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    position: relative;
+    margin-left: 15px; /* Separa el Slidebar del logo */
+}
+
+/* 🔹 Alineación del ícono con el separator en el Header */
+.logo-slidebar-container {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    position: relative;
+}
+
+/* 🔹 Línea separadora */
+.separator {
+    height: 30px;
+    width: 2px;
+    background-color: #ddd;
+    margin: 0 15px; /* Espacio entre Slidebar y Perfil */
+}
+
+/* ============================ */
+/* 📌 Estilos de las Barras del Ícono */
+/* ============================ */
+.slidebar-icon .common-bar {
+    position: absolute;
+    height: 3px;
+    width: 25px;
+    background-color: #807c7c;
+    border-radius: 50px;
+    transition: 0.3s ease;
+}
+
+.slidebar-icon .top-bar {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slidebar-icon .middle-bar {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slidebar-icon .bottom-bar {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ============================ */
+/* 📌 Animación cuando se abre el Slidebar */
+/* ============================ */
+.slidebar-toggle:checked ~ .slidebar-icon .top-bar {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 25px;
+}
+
+.slidebar-toggle:checked ~ .slidebar-icon .bottom-bar {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 25px;
+}
+
+.slidebar-toggle:checked ~ .slidebar-icon .middle-bar {
+    opacity: 0;
+}
+
+/* ============================ */
+/* 📌 Ajuste de la visibilidad */
+/* ============================ */
+.slidebar-toggle:checked ~ .slidebar-menu {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* ============================ */
+/* 📌 Logo dentro del Slidebar */
+/* ============================ */
+.logo-slidebar {
+    width: 150px; /* Ajusta el tamaño */
+    height: auto;
+}
+
+.menu-header {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centrar el logo */
+    align-items: center;
+    padding: 20px 0;
+}
+
+/* ============================ */
+/* 📱 RESPONSIVE DESIGN 📱 */
+/* ============================ */
+
+@media screen and (max-width: 768px) {
+    .separator {
+        display: none; /* Ocultamos la línea separadora en móviles */
+    }
+
+    .slidebar-icon {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .slidebar-menu {
+        width: 200px; /* Ajuste para móviles */
+    }
+
+    .slidebar-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
