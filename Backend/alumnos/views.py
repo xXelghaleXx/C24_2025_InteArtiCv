@@ -33,8 +33,8 @@ from django.utils import timezone
 
 
 # Configuración de las credenciales de Google OAuth
-GOOGLE_CLIENT_ID = '258181987281-jd71k4f6k0no7e61qk34mpvc6i7nh2sp.apps.googleusercontent.com'
-GOOGLE_CLIENT_SECRET = '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'
+GOOGLE_CLIENT_ID = ''
+GOOGLE_CLIENT_SECRET = ''
 
 
 class GoogleLoginView(APIView):
