@@ -7,13 +7,19 @@ import { FaPowerOff } from "react-icons/fa";
 
 const Header = ({ onLogout }) => {
   const navigate = useNavigate();
-  const usuario = JSON.parse(localStorage.getItem("usuario")) || {};
+  
+  // Obtén el nombre completo del localStorage
+  const nombreCompleto = localStorage.getItem("nombre");
+  
+  // Extrae solo la primera palabra (primer nombre)
+  const primerNombre = nombreCompleto ? nombreCompleto.split(' ')[0] : "Usuario";
 
   const handleLogout = () => {
     // Limpiar el localStorage
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("usuario");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("alumno_id");
+    localStorage.removeItem("nombre");
     
     // Ejecutar la función onLogout si existe
     if (onLogout) {
@@ -36,7 +42,7 @@ const Header = ({ onLogout }) => {
 
         {/* Lado derecho */}
         <div className="user-info">
-          <span className="user-name">{usuario.nombre || "Iniciar Sesión"}</span>
+          <span className="user-name">{primerNombre}</span>
           <button 
             className="logout-button"
             onClick={handleLogout}

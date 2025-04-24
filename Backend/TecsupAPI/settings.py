@@ -23,16 +23,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=s&auwajt74dcq0a=g4jig!^ft5g)c6ebw^nxewm)1waap&w3+'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "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")
-
+    
 # Application definition
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),

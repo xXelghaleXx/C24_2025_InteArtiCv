@@ -148,11 +148,7 @@ class SubirCVView(APIView):
         Valida que el contenido del CV tenga las secciones necesarias.
         """
         campos_obligatorios = [
-            "Perfil Profesional",
-            "Educación Superior",
-            "Experiencia Académica",
-            "Experiencia Laboral",
-            "Información Adicional"
+
         ]
 
         faltantes = [campo for campo in campos_obligatorios if campo.lower() not in contenido_extraido.lower()]
@@ -494,3 +490,18 @@ class ChatEntrevistaView(APIView):
             "siguiente_pregunta_id": siguiente_pregunta.id if siguiente_pregunta else None,
             "siguiente_pregunta_texto": siguiente_pregunta.texto if siguiente_pregunta else None
         }, status=status.HTTP_201_CREATED)
+
+
+class EliminarCVView(APIView):
+    """
+    Elimina un CV específico por su ID.
+    """
+    def delete(self, request, cv_id, *args, **kwargs):
+        try:
+            cv = CV.objects.get(id=cv_id)
+            cv.delete()
+            return Response({"mensaje": "CV eliminado correctamente"}, status=status.HTTP_204_NO_CONTENT)
+        except CV.DoesNotExist:
+            return Response({"error": "El CV no existe"}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"error": f"Error al eliminar el CV: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

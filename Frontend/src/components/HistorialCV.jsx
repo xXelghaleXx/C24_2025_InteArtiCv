@@ -31,33 +31,43 @@ const HistorialCVs = () => {
     }
   };
 
-  const handleDeleteCV = async (cvId) => {
-    if (!window.confirm('¿Estás seguro de que deseas eliminar este CV?')) {
-      return;
+  // Modifica la función handleDeleteCV para verificar el token
+const handleDeleteCV = async (cvId) => {
+  if (!window.confirm('¿Estás seguro de que deseas eliminar este CV?')) {
+    return;
+  }
+
+  const token = localStorage.getItem('access_token');
+  if (!token) {
+    alert('No hay sesión activa. Por favor, inicia sesión nuevamente.');
+    return;
+  }
+
+  try {
+    setDeletingId(cvId);
+    const response = await fetch(`http://127.0.0.1:8000/api/eliminar-cv/${cvId}/`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Error response:', errorData);
+      throw new Error(errorData.error || 'Error al eliminar el CV');
     }
 
-    try {
-      setDeletingId(cvId);
-      const response = await fetch(`http://127.0.0.1:8000/api/eliminar-cv/${cvId}/`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Error al eliminar el CV');
-      }
-
-      // Actualizar la lista de CVs después de eliminar
-      setCvs(cvs.filter(cv => cv.id !== cvId));
-    } catch (err) {
-      console.error('Error deleting CV:', err);
-      alert('No se pudo eliminar el CV. Por favor, inténtalo de nuevo.');
-    } finally {
-      setDeletingId(null);
-    }
-  };
+    // Actualizar la lista de CVs después de eliminar
+    setCvs(cvs.filter(cv => cv.id !== cvId));
+  } catch (err) {
+    console.error('Error deleting CV:', err);
+    alert('No se pudo eliminar el CV. Por favor, inténtalo de nuevo.');
+  } finally {
+    setDeletingId(null);
+  }
+};
 
   const formatDate = (dateString) => {
     const options = { 
