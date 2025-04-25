@@ -8,39 +8,68 @@ import LectorCV from "./components/LectorCV";
 import HistorialCV from "./components/HistorialCV";
 import ChatEntrevista from "./components/Entrevista";
 import Background from "./components/Background";
+import ProtectedRoute from "./components/ProtectedRoute";
+import authService from "./services/authService";
 import "./styles/Chat.css";
+import "./styles/layout.css";
 import "./index.css";
 
 const App = () => {
   const location = useLocation();
-  const isLoginPage = location.pathname === "/";
+  const isLoginPage = location.pathname === "/" || location.pathname === "/register";
 
   const handleLogout = () => {
     console.log("Usuario ha cerrado sesión");
-    // Lógica de logout
+    authService.logout();
+    // Redirigir al login
+    window.location.href = "/";
   };
 
   return (
     <GoogleOAuthProvider clientId="TU_CLIENT_ID_DE_GOOGLE">
-      {/* Estructura principal mejorada */}
-      <div className="app-container">
-        <Background />
-        
-        {/* Contenido principal con gestión de espacio */}
-        <main className="main-content">
-          {!isLoginPage && <Header onLogout={handleLogout} />}
-          
-          <div className="page-content">
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/welcome" element={<Welcome />} />
-              <Route path="/lector-cv" element={<LectorCV />} />
-              <Route path="/entrevista" element={<ChatEntrevista />} />
-              <Route path="/historialCV" element={<HistorialCV />} />
-            </Routes>
+      {/* Estructura principal completamente reorganizada */}
+      <div className="app-root">
+        {/* Header fijo en la parte superior */}
+        {!isLoginPage && (
+          <div className="header-container">
+            <Header onLogout={handleLogout} />
           </div>
-        </main>
+        )}
+        
+        {/* Contenedor para el fondo */}
+        <div className="background-wrapper">
+          <Background />
+        </div>
+        
+        {/* Contenido principal con espacio para evitar el header */}
+        <div className={`content-wrapper ${!isLoginPage ? 'with-header' : ''}`}>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            
+            {/* Rutas protegidas */}
+            <Route path="/welcome" element={
+              <ProtectedRoute>
+                <Welcome />
+              </ProtectedRoute>
+            } />
+            <Route path="/lector-cv" element={
+              <ProtectedRoute>
+                <LectorCV />
+              </ProtectedRoute>
+            } />
+            <Route path="/entrevista" element={
+              <ProtectedRoute>
+                <ChatEntrevista />
+              </ProtectedRoute>
+            } />
+            <Route path="/historialCV" element={
+              <ProtectedRoute>
+                <HistorialCV />
+              </ProtectedRoute>
+            } />
+          </Routes>
+        </div>
       </div>
     </GoogleOAuthProvider>
   );

@@ -3,8 +3,18 @@ import axios from 'axios';
 const API_URL = 'http://localhost:8000/api/';
 
 export const authService = {
+  // Validate if email belongs to the Tecsup domain
+  validateTecsupDomain: (email) => {
+    return email.endsWith('@tecsup.edu.pe');
+  },
+  
   login: async (correo, contrasena) => {
     try {
+      // Validate email domain before attempting login
+      if (!authService.validateTecsupDomain(correo)) {
+        throw new Error('Solo se permite el acceso con correo institucional de Tecsup');
+      }
+      
       const response = await axios.post(`${API_URL}login/`, {
         correo,
         contrasena
@@ -33,6 +43,11 @@ export const authService = {
 
   register: async (userData) => {
     try {
+      // Validate email domain before attempting registration
+      if (!authService.validateTecsupDomain(userData.correo)) {
+        throw new Error('Solo se permite el registro con correo institucional de Tecsup');
+      }
+      
       const response = await axios.post(`${API_URL}registro/`, userData);
       
       // Opcional: Iniciar sesión automáticamente después del registro
@@ -66,9 +81,22 @@ export const authService = {
     const userString = localStorage.getItem('user');
     return userString ? JSON.parse(userString) : null;
   },
+  
+  getUserEmail: () => {
+    const user = authService.getCurrentUser();
+    return user ? user.correo : null;
+  },
 
   getUserName: () => {
-    const user = this.getCurrentUser();
+    const user = authService.getCurrentUser();
     return user ? user.nombre : 'Usuario';
+  },
+  
+  // Check if user has Tecsup email
+  hasValidDomain: () => {
+    const email = authService.getUserEmail();
+    return email ? authService.validateTecsupDomain(email) : false;
   }
 };
+
+export default authService;

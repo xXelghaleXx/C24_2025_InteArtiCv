@@ -1,0 +1,68 @@
+/* Estructura principal de la aplicación */
+.app-root {
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Contenedor del header */
+  .header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Z-index muy alto para asegurar que nada lo traspase */
+  }
+  
+  /* Contenedor del fondo */
+  .background-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* El fondo siempre debe estar detrás del contenido */
+  }
+  
+/* Contenedor principal para el contenido */
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 16px);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar el contenido horizontalmente */
+    max-width: 100%; /* Asegurar que no exceda el ancho de la ventana */
+    overflow-x: hidden; /* Evitar scroll horizontal en el contenedor principal */
+  }
+  
+  /* Clase para cuando el header está presente */
+  .content-wrapper.with-header {
+    padding-top: calc(70px + 16px); /* Altura del header (70px) + espacio de un <br> (16px) */
+  }
+  
+  /* Para componentes específicos como HistorialCV */
+  .content-wrapper > * {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  /* Ajustes responsivos */
+  @media screen and (max-width: 1024px) {
+    .content-wrapper.with-header {
+      padding-top: calc(65px + 16px); /* Header más pequeño para pantallas medianas */
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .content-wrapper.with-header {
+      padding-top: calc(60px + 16px); /* Header más pequeño para tablets */
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .content-wrapper.with-header {
+      padding-top: calc(55px + 16px); /* Header más pequeño para móviles */
+    }
+  }
