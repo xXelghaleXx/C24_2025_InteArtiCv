@@ -1,170 +1,819 @@
-/* Estilos generales */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* ===== RESET Y CONFIGURACIÓN BASE ===== */
+*, *::before, *::after {
+  color-scheme: light !important;
+  forced-color-adjust: none !important;
+  box-sizing: border-box;
 }
 
-/* Contenedor del formulario */
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* ===== VARIABLES DE COLORES TECSUP ===== */
+:root {
+  --tecsup-celeste: #00BFFF;
+  --tecsup-celeste-hover: #1E90FF;
+  --tecsup-celeste-light: #87CEEB;
+  --tecsup-blanco: #ffffff;
+  --tecsup-gris-muy-claro: #f8f9fa;
+  --tecsup-gris-claro: #e9ecef;
+  --tecsup-gris-medio: #6c757d;
+  --tecsup-gris-oscuro: #495057;
+  --tecsup-border: #dee2e6;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.tecsup-login-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: 100vh;
+  display: flex;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: var(--tecsup-gris-muy-claro);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color-scheme: light;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* ===== GRAN CUADRO UNIFICADO ===== */
+.tecsup-unified-card {
+  display: flex;
+  width: 90%;
+  max-width: 1100px;
+  background: var(--tecsup-blanco);
+  border-radius: 24px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--tecsup-border);
+  overflow: hidden;
+  min-height: 650px;
+  margin: auto;
+  position: relative;
+}
+
+/* ===== LADO IZQUIERDO - FORMULARIO ===== */
+.tecsup-form-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+}
+
+.tecsup-form-container {
   width: 100%;
+  max-width: 420px;
+  padding: 20px;
 }
 
-.login-box {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
+/* ===== HEADER Y LOGO ===== */
+.tecsup-header {
   text-align: center;
-  width: 400px;
+  margin-bottom: 40px;
 }
 
-/* Título */
-h2 {  
-  font-size: 18px;
-  color: black;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.tecsup-logo {
   margin-bottom: 20px;
 }
 
-/* Input Group */
-.input-group {
+.tecsup-logo-text {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--tecsup-celeste);
+  display: block;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.tecsup-tagline {
+  font-size: 11px;
+  color: var(--tecsup-gris-medio);
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tecsup-system-title {
+  font-size: 20px;
+  color: var(--tecsup-celeste);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* ===== FORMULARIO ===== */
+.tecsup-form {
+  width: 100%;
+}
+
+.tecsup-input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.tecsup-input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid var(--tecsup-gris-claro);
+  border-radius: 12px;
+  background: var(--tecsup-blanco);
+  color: var(--tecsup-gris-oscuro);
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.tecsup-input::placeholder {
+  color: var(--tecsup-gris-medio);
+  font-weight: 400;
+}
+
+.tecsup-input:focus {
+  border-color: var(--tecsup-celeste);
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
+  background: var(--tecsup-blanco);
+}
+
+.tecsup-input:hover {
+  border-color: var(--tecsup-celeste-light);
+}
+
+/* ===== ENLACE OLVIDÓ CONTRASEÑA ===== */
+.tecsup-forgot-password {
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.tecsup-forgot-link {
+  color: var(--tecsup-celeste);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.tecsup-forgot-link:hover {
+  color: var(--tecsup-celeste-hover);
+  text-decoration: underline;
+}
+
+/* ===== BOTÓN PRINCIPAL ===== */
+.tecsup-login-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--tecsup-celeste);
+  color: var(--tecsup-blanco);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
+}
+
+.tecsup-login-btn:hover {
+  background: var(--tecsup-celeste-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4);
+}
+
+.tecsup-login-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 191, 255, 0.3);
+}
+
+/* ===== DIVIDER ===== */
+.tecsup-divider {
+  text-align: center;
+  margin: 30px 0;
+  position: relative;
+}
+
+.tecsup-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--tecsup-gris-claro);
+}
+
+.tecsup-divider span {
+  background: var(--tecsup-blanco);
+  color: var(--tecsup-gris-medio);
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== GOOGLE LOGIN ===== */
+.tecsup-google-container {
+  margin-bottom: 30px;
+}
+
+.tecsup-google-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--tecsup-blanco);
+  color: var(--tecsup-gris-oscuro);
+  border: 2px solid var(--tecsup-gris-claro);
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+.tecsup-google-btn:hover {
+  border-color: var(--tecsup-celeste);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: var(--tecsup-gris-muy-claro);
+}
+
+.tecsup-google-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tecsup-google-icon {
+  flex-shrink: 0;
+}
+
+/* ===== ENLACE DE REGISTRO ===== */
+.tecsup-register {
+  text-align: center;
+  font-size: 14px;
+  color: var(--tecsup-gris-medio);
+}
+
+.tecsup-register-link {
+  color: var(--tecsup-celeste);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.tecsup-register-link:hover {
+  color: var(--tecsup-celeste-hover);
+  text-decoration: underline;
+}
+
+/* ===== LADO DERECHO - IMAGEN ===== */
+.tecsup-image-side {
+  flex: 1;
+  background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(0, 191, 255, 0.05)), 
+              linear-gradient(rgba(248, 249, 250, 0.3), rgba(248, 249, 250, 0.3)),
+              url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80') center center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.tecsup-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(0, 191, 255, 0.15) 0%, 
+    rgba(0, 191, 255, 0.08) 30%,
+    rgba(248, 249, 250, 0.4) 60%, 
+    rgba(248, 249, 250, 0.7) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor de la imagen central */
+.tecsup-center-image {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-/* Estilo de los labels */
-.input-group label {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 5px;
-}
-
-/* Campos de entrada */
-.input-group input {
-  width: 95%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: white;
-  font-size: 14px;
-  outline: none;
-  color: #333;
-}
-
-/* Placeholder con color gris */
-.input-group input::placeholder {
-  color: #aaa;
-}
-
-/* Estilos para los botones */
-button {
-  background-color: #05abd0 !important; /* Asegura que se aplique el color */
-  color: white !important;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s ease;
-  width: 100%;
-  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font-weight: bold;
-  text-decoration: none;
+  text-align: center;
+  max-width: 400px;
+  padding: 40px;
 }
 
-button:focus {
-  outline: none;
-  border: none;
+.tecsup-main-image {
+  width: 280px;
+  height: 320px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  animation: floatImage 6s ease-in-out infinite;
 }
 
-/* Asegura que el hover no cause un borde visible no deseado */
-button:hover {
-  background-color: #048db1 !important;
-  border: none !important;
+.tecsup-image-caption {
+  color: var(--tecsup-gris-oscuro);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
 }
 
-/* Botón de Google con el mismo estilo */
-.google-login {
-  background-color: white !important;
-  color: rgb(104, 104, 104) !important;
-  border: 1px solid rgb(200, 198, 198) !important; 
-  padding: 10px;
-  width: 100%;
+.tecsup-image-subcaption {
+  color: var(--tecsup-gris-medio);
   font-size: 14px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-weight: bold;
-  transition: background 0.3s ease;
+  font-weight: 400;
+  margin-top: 8px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
-.register-link {
-  color: rgb(62, 62, 62);
-}
-
-/* Hover del botón de Google */
-.google-login:hover {
-  background-color: #c1351d !important;
-  color: white !important;
-  border-color: #c1351d !important;
-}
-
-/* Ícono de Google */
-.google-icon {
-  font-size: 20px;
-}
-
-@media screen and (max-width: 1024px) {
-  .login-box {
-    width: 80%;
+@keyframes floatImage {
+  0%, 100% { 
+    transform: translateY(0px) scale(1); 
+  }
+  50% { 
+    transform: translateY(-10px) scale(1.02); 
   }
 }
 
-@media screen and (max-width: 768px) {
-  .login-box {
-    width: 90%;
-    padding: 20px;
+/* ===== ANIMACIONES ADICIONALES ===== */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
   }
-  .input-group input {
-    font-size: 16px;
-  }
-  button {
-    font-size: 16px;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-@media screen and (max-width: 480px) {
-  .login-box {
-    width: 95%;
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tecsup-form-side {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.tecsup-image-side {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets grandes y laptops pequeñas */
+@media (max-width: 1200px) {
+  .tecsup-unified-card {
+    max-width: 1000px;
+  }
+  
+  .tecsup-form-container {
+    max-width: 400px;
     padding: 15px;
   }
-  h2 {
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .tecsup-login-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 15px;
+  }
+  
+  .tecsup-unified-card {
+    flex-direction: column;
+    max-width: 550px;
+    min-height: auto;
+    width: 100%;
+  }
+  
+  .tecsup-image-side {
+    min-height: 280px;
+    order: 2;
+    flex: none;
+  }
+  
+  .tecsup-form-side {
+    order: 1;
+    flex: none;
+    padding: 30px;
+  }
+  
+  .tecsup-form-container {
+    max-width: 500px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  
+  .tecsup-main-image {
+    width: 200px;
+    height: 240px;
+  }
+  
+  .tecsup-center-image {
+    padding: 20px;
+    max-width: 300px;
+  }
+  
+  .tecsup-image-caption {
     font-size: 16px;
   }
-  .input-group input {
-    font-size: 14px;
-    padding: 10px;
+  
+  .tecsup-image-subcaption {
+    font-size: 13px;
   }
-  button {
+}
+
+/* Tablets pequeñas */
+@media (max-width: 768px) {
+  .tecsup-login-container {
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .tecsup-unified-card {
+    border-radius: 16px;
+    max-width: 480px;
+    width: 100%;
+  }
+  
+  .tecsup-form-side {
+    padding: 25px;
+  }
+  
+  .tecsup-form-container {
+    padding: 15px;
+    max-width: 420px;
+  }
+  
+  .tecsup-header {
+    margin-bottom: 35px;
+  }
+  
+  .tecsup-logo-text {
+    font-size: 24px;
+  }
+  
+  .tecsup-system-title {
+    font-size: 18px;
+  }
+  
+  .tecsup-input {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+  
+  .tecsup-login-btn,
+  .tecsup-google-btn {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+  
+  .tecsup-image-side {
+    min-height: 220px;
+  }
+  
+  .tecsup-main-image {
+    width: 160px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .tecsup-center-image {
+    padding: 15px;
+    max-width: 250px;
+  }
+  
+  .tecsup-image-caption {
+    font-size: 15px;
+  }
+  
+  .tecsup-image-subcaption {
+    font-size: 12px;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 480px) {
+  .tecsup-login-container {
+    padding: 8px;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .tecsup-unified-card {
+    border-radius: 12px;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .tecsup-form-side {
+    padding: 20px;
+  }
+  
+  .tecsup-form-container {
+    padding: 10px;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .tecsup-header {
+    margin-bottom: 25px;
+  }
+  
+  .tecsup-logo-text {
+    font-size: 22px;
+  }
+  
+  .tecsup-tagline {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+  
+  .tecsup-system-title {
+    font-size: 16px;
+  }
+  
+  .tecsup-input-group {
+    margin-bottom: 18px;
+  }
+  
+  .tecsup-input {
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  
+  .tecsup-forgot-password {
+    margin-bottom: 25px;
+  }
+  
+  .tecsup-login-btn,
+  .tecsup-google-btn {
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  
+  .tecsup-login-btn {
+    margin-bottom: 20px;
+  }
+  
+  .tecsup-divider {
+    margin: 25px 0;
+  }
+  
+  .tecsup-google-container {
+    margin-bottom: 25px;
+  }
+  
+  .tecsup-image-side {
+    min-height: 180px;
+  }
+  
+  .tecsup-main-image {
+    width: 120px;
+    height: 150px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+  }
+  
+  .tecsup-center-image {
+    padding: 10px;
+    max-width: 200px;
+  }
+  
+  .tecsup-image-caption {
     font-size: 14px;
-    padding: 8px 15px;
+  }
+  
+  .tecsup-image-subcaption {
+    font-size: 11px;
+    margin-top: 5px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 360px) {
+  .tecsup-form-side {
+    padding: 15px;
+  }
+  
+  .tecsup-form-container {
+    padding: 5px;
+  }
+  
+  .tecsup-logo-text {
+    font-size: 20px;
+  }
+  
+  .tecsup-system-title {
+    font-size: 15px;
+  }
+  
+  .tecsup-input {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+  
+  .tecsup-login-btn,
+  .tecsup-google-btn {
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+  
+  .tecsup-image-side {
+    min-height: 180px;
+  }
+  
+  .tecsup-main-image {
+    width: 100px;
+    height: 120px;
+    margin-bottom: 10px;
+  }
+  
+  .tecsup-center-image {
+    padding: 8px;
+    max-width: 160px;
+  }
+  
+  .tecsup-image-caption {
+    font-size: 12px;
+  }
+  
+  .tecsup-image-subcaption {
+    font-size: 10px;
+  }
+}
+
+/* Orientación landscape en móviles */
+@media (max-height: 600px) and (orientation: landscape) {
+  .tecsup-unified-card {
+    flex-direction: row;
+    max-width: 900px;
+  }
+  
+  .tecsup-image-side {
+    flex: 0.4;
+    min-height: auto;
+    order: 1;
+  }
+  
+  .tecsup-form-side {
+    flex: 0.6;
+    order: 2;
+    padding: 20px;
+  }
+  
+  .tecsup-form-container {
+    padding: 15px;
+    max-width: 400px;
+  }
+  
+  .tecsup-header {
+    margin-bottom: 20px;
+  }
+  
+  .tecsup-input-group {
+    margin-bottom: 15px;
+  }
+  
+  .tecsup-forgot-password {
+    margin-bottom: 20px;
+  }
+  
+  .tecsup-divider {
+    margin: 20px 0;
+  }
+  
+  .tecsup-main-image {
+    width: 140px;
+    height: 180px;
+    margin-bottom: 15px;
+  }
+  
+  .tecsup-center-image {
+    padding: 15px;
+    max-width: 200px;
+  }
+  
+  .tecsup-image-caption {
+    font-size: 13px;
+  }
+  
+  .tecsup-image-subcaption {
+    font-size: 11px;
+  }
+}
+
+/* Pantallas muy grandes */
+@media (min-width: 1600px) {
+  .tecsup-unified-card {
+    max-width: 1400px;
+  }
+  
+  .tecsup-form-container {
+    max-width: 500px;
+    padding: 30px;
+  }
+  
+  .tecsup-logo-text {
+    font-size: 32px;
+  }
+  
+  .tecsup-system-title {
+    font-size: 22px;
+  }
+  
+  .tecsup-input {
+    padding: 18px 22px;
+    font-size: 17px;
+  }
+  
+  .tecsup-login-btn,
+  .tecsup-google-btn {
+    padding: 18px 26px;
+    font-size: 17px;
+  }
+  
+  .tecsup-main-image {
+    width: 320px;
+    height: 380px;
+  }
+  
+  .tecsup-center-image {
+    padding: 50px;
+    max-width: 500px;
+  }
+  
+  .tecsup-image-caption {
+    font-size: 20px;
+  }
+  
+  .tecsup-image-subcaption {
+    font-size: 16px;
+  }
+}
+
+/* ===== FORZAR TEMA CLARO ===== */
+@media (prefers-color-scheme: dark) {
+  *, *::before, *::after {
+    color-scheme: light !important;
+    forced-color-adjust: none !important;
+  }
+  
+  .tecsup-login-container,
+  .tecsup-unified-card,
+  .tecsup-form-side,
+  .tecsup-form-container,
+  .tecsup-input,
+  .tecsup-google-btn {
+    background: var(--tecsup-blanco) !important;
+    color: var(--tecsup-gris-oscuro) !important;
+  }
+  
+  .tecsup-logo-text,
+  .tecsup-system-title,
+  .tecsup-forgot-link,
+  .tecsup-register-link {
+    color: var(--tecsup-celeste) !important;
+  }
+  
+  .tecsup-tagline,
+  .tecsup-register {
+    color: var(--tecsup-gris-medio) !important;
+  }
+  
+  .tecsup-login-btn {
+    background: var(--tecsup-celeste) !important;
+    color: var(--tecsup-blanco) !important;
   }
 }

@@ -131,13 +131,18 @@ class SubirCVView(APIView):
         Extrae el texto de un archivo PDF o DOCX.
         """
         contenido = ""
+        
+        # Resetear el puntero del archivo al inicio
+        archivo.seek(0)
 
         if archivo.name.endswith(".pdf"):
-            with fitz.open(stream=archivo.read(), filetype="pdf") as pdf:
+            archivo_bytes = archivo.read()
+            with fitz.open(stream=archivo_bytes, filetype="pdf") as pdf:
                 for pagina in pdf:
                     contenido += pagina.get_text("text") + "\n"
 
         elif archivo.name.endswith(".docx"):
+            archivo.seek(0)  # Asegurar que esté al inicio
             doc = docx.Document(archivo)
             contenido = "\n".join([p.text for p in doc.paragraphs])
 
@@ -148,7 +153,8 @@ class SubirCVView(APIView):
         Valida que el contenido del CV tenga las secciones necesarias.
         """
         campos_obligatorios = [
-
+            # Puedes agregar campos obligatorios aquí si es necesario
+            # Ejemplo: "experiencia", "educacion", "habilidades"
         ]
 
         faltantes = [campo for campo in campos_obligatorios if campo.lower() not in contenido_extraido.lower()]
@@ -220,15 +226,15 @@ class SubirCVView(APIView):
         except Alumno.DoesNotExist:
             raise ValidationError("El alumno no existe")
 
-        # Validar el tipo de archivo
-        if not archivo.name.endswith(('.pdf', '.docx')):
-            raise ValidationError("El archivo debe ser un PDF o DOCX")
+        # Validar el tipo de archivo - Solo PDF según tu requerimiento
+        if not archivo.name.endswith('.pdf'):
+            raise ValidationError("El archivo debe ser un PDF")
 
-        # Validar el tamaño del archivo (por ejemplo, 5MB máximo)
+        # Validar el tamaño del archivo (5MB máximo)
         if archivo.size > 5 * 1024 * 1024:
             raise ValidationError("El archivo no puede ser mayor a 5MB")
 
-        # Extraer texto del archivo sin guardarlo en el sistema de archivos
+        # Extraer texto del archivo
         contenido_extraido = self.extraer_texto_cv(archivo)
 
         # Validar que el contenido del CV tenga las secciones necesarias
@@ -242,8 +248,16 @@ class SubirCVView(APIView):
         # Extraer habilidades del contenido del CV usando OpenAI
         habilidades_encontradas = self.extraer_habilidades_con_ia(contenido_extraido)
 
-        # Guardar el archivo en el sistema de archivos solo si pasa todas las validaciones
-        nombre_archivo = archivo.name
+        # Generar un nombre único para el archivo para evitar conflictos
+        import time
+        import uuid
+        timestamp = str(int(time.time()))
+        unique_id = str(uuid.uuid4())[:8]
+        nombre_original = archivo.name
+        nombre_archivo = f"{timestamp}_{unique_id}_{nombre_original}"
+
+        # Resetear el puntero del archivo para guardarlo
+        archivo.seek(0)
         contenido_archivo = archivo.read()
 
         # Crear y guardar el objeto CV
@@ -259,9 +273,8 @@ class SubirCVView(APIView):
         return Response({
             "mensaje": "CV subido y procesado correctamente",
             "cv": CVSerializer(nuevo_cv).data,
-            "habilidades_encontradas": [str(h) for h in habilidades_encontradas]  # Opcional: Mostrar habilidades encontradas
+            "habilidades_encontradas": [str(h) for h in habilidades_encontradas]
         }, status=status.HTTP_201_CREATED)
-
 
 class HistorialCVsView(ListAPIView):
     serializer_class = CVSerializer
@@ -289,9 +302,9 @@ class AnalizarCVView(APIView):
         prompt = f"""
         Analiza el siguiente currículum y extrae la siguiente información:
         - Habilidades técnicas y blandas
-        - Experiencia laboral
-        - Áreas de mejora
-        - Resumen general del perfil
+            - Experiencia laboral
+            - Áreas de mejora
+            - Resumen general del perfil
 
         CV:
         {cv.contenido_extraido}
